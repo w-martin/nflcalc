@@ -1,4 +1,4 @@
-package org.spare.nflcalc;
+package org.nflcalc.GUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,5 +23,7 @@ public class Main {
 
         frame.pack();
         frame.setVisible(true);
+
+        frame.setLocationRelativeTo(null);
     }
 }
