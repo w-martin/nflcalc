@@ -7,13 +7,16 @@ import java.util.List;
  */
 public class Conference {
 
-    final List<Division> divisions;
+    List<Division> divisions;
 
-    public Conference(final List<Division> divisions) {
-        this.divisions = divisions;
+    public Conference() {
     }
 
     public List<Division> getDivisions() {
         return divisions;
+    }
+
+    public void setDivisions(final List<Division> divisions) {
+        this.divisions = divisions;
     }
 }
