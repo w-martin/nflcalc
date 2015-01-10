@@ -3,7 +3,10 @@ package org.nflcalc.Controller;
 import org.nflcalc.Model.Conference;
 import org.nflcalc.Model.Division;
 import org.nflcalc.Model.Team;
+import org.nflcalc.Views.ConferencePanel;
 
+import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,4 +49,16 @@ public class Controller {
     }
 
 
+    public static JPanel createMainPanel() {
+        final Conference nfc = Controller.loadConference(Conference.ConferenceType.NFC);
+        final Conference afc = Controller.loadConference(Conference.ConferenceType.AFC);
+        final ConferencePanel nfcPanel = new ConferencePanel(nfc);
+        final ConferencePanel afcPanel = new ConferencePanel(afc);
+
+        final JPanel mainPanel = new JPanel();
+        mainPanel.add(nfcPanel);
+        mainPanel.add(afcPanel);
+
+        return mainPanel;
+    }
 }

@@ -12,6 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="Model" />
+    <orderEntry type="module" module-name="Model" />
     <orderEntry type="library" name="Maven: commons-lang:commons-lang:2.1" level="project" />
     <orderEntry type="library" name="Maven: org.codehaus.plexus:plexus-utils:1.1" level="project" />
   </component>
