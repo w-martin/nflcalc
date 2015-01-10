@@ -16,9 +16,9 @@ public class CalcFrame extends JFrame {
         super("NFL Calculator");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        final JLabel emptyLabel = new JLabel("calculations here");
-        getContentPane().add(emptyLabel, BorderLayout.CENTER);
+//        final JLabel emptyLabel = new JLabel("calculations here");
+//        getContentPane().add(emptyLabel, BorderLayout.CENTER);
 
-        pack();
+//        pack();
     }
 }

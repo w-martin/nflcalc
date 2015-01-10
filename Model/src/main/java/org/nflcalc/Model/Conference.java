@@ -7,16 +7,39 @@ import java.util.List;
  */
 public class Conference {
 
-    List<Division> divisions;
+    /**
+     * NFC or AFC.
+     */
+    public enum ConferenceType {
+        NFC("NFC"), AFC("AFC");
 
-    public Conference() {
+        private final String name;
+
+        ConferenceType(final String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 
-    public List<Division> getDivisions() {
+    private final ConferenceType type;
+    private Division[] divisions;
+
+    public Conference(final ConferenceType type) {
+        this.type = type;
+    }
+
+    public Division[] getDivisions() {
         return divisions;
     }
 
-    public void setDivisions(final List<Division> divisions) {
+    public void setDivisions(Division[] divisions) {
         this.divisions = divisions;
+    }
+
+    public ConferenceType getType() {
+        return type;
     }
 }

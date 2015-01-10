@@ -3,6 +3,7 @@ package org.nflcalc;
 import org.nflcalc.Controller.Controller;
 import org.nflcalc.Model.Conference;
 import org.nflcalc.Views.CalcFrame;
+import org.nflcalc.Views.CalcPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,10 +18,12 @@ public class Main {
 
         CalcFrame frame = new CalcFrame();
 
-        final Conference nfc = Controller.loadConference(Controller.ConferenceType.NFC);
-//        CalcPanel nfcPanel =
+        final Conference nfc = Controller.loadConference(Conference.ConferenceType.NFC);
+        CalcPanel nfcPanel = new CalcPanel(nfc);
+        frame.getContentPane().add(nfcPanel, BorderLayout.CENTER);
 
-        frame.setVisible(true);
+        frame.pack();
         frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
     }
 }

@@ -7,13 +7,22 @@ import java.util.List;
  */
 public class Division {
 
-    private final List<Team> teams;
+    private final String name;
+    private Team[] teams;
 
-    public Division(final List<Team> teams) {
-        this.teams = teams;
+    public Division(final String name) {
+        this.name = name;
     }
 
-    public List<Team> getTeams() {
+    public String getName() {
+        return name;
+    }
+
+    public Team[] getTeams() {
         return teams;
+    }
+
+    public void setTeams(Team[] teams) {
+        this.teams = teams;
     }
 }
