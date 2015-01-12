@@ -23,7 +23,7 @@ public class RecordController {
     }
 
     private void refreshResults() {
-
+        // pull NFL.com JSON data
     }
 
     public void setRecordPanel(RecordPanel recordPanel) {
