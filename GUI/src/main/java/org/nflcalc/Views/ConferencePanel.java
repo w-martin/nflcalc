@@ -18,21 +18,50 @@ public class ConferencePanel extends JPanel {
     public ConferencePanel(final Conference conference) {
         this.conference = conference;
 
-        final JLabel topLabel = new JLabel(conference.getType().getName());
-        topLabel.setHorizontalAlignment(JLabel.CENTER);
-        topLabel.setVerticalAlignment(JLabel.CENTER);
+        this.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
-        this.setLayout(new BorderLayout());
-        this.add(topLabel, BorderLayout.NORTH);
-
-        final JPanel divisionsPanel = new JPanel();
-        divisionsPanel.setLayout(new BoxLayout(divisionsPanel, BoxLayout.Y_AXIS));
+        int d = 0;
         for (final Division division : conference.getDivisions()) {
-            final DivisionPanel divisionPanel = new DivisionPanel(division);
-            divisionsPanel.add(divisionPanel);
+            c.gridy = d;
+            c.gridx = 0;
+            final JLabel name = new JLabel(division.getName());
+            Font font = name.getFont();
+            Font boldFont = new Font(font.getFontName(), Font.BOLD, font.getSize());
+            name.setFont(boldFont);
+
+            this.add(name, c);
+            c.fill = GridBagConstraints.HORIZONTAL;
+            c.gridheight = 1;
+            c.ipadx = 10;
+            c.gridx += 3;
+            addLabel("W",c);
+            c.gridx += 1;
+            addLabel("L", c);
+            c.gridx += 1;
+            addLabel("T", c);
+
+            for(final Team team : division.getTeams()) {
+                c.gridx = 0;
+                c.gridy += 1;
+                c.gridwidth = 3;
+                addLabel(team.getId(), c);
+                c.gridwidth = 1;
+                c.gridx += 3;
+                addLabel("0", c);;
+                c.gridx += 1;
+                addLabel("0", c);;
+                c.gridx += 1;
+                addLabel("0", c);;
+            }
+
+            d += 5;
         }
-        this.add(divisionsPanel, BorderLayout.CENTER);
     }
 
-
+    private void addLabel(String text, final GridBagConstraints c) {
+        final JLabel name = new JLabel(text);
+        name.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        this.add(name, c);
+    }
 }
