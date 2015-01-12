@@ -4,6 +4,7 @@ import org.nflcalc.Model.Conference;
 import org.nflcalc.Model.Division;
 import org.nflcalc.Model.Team;
 import org.nflcalc.Views.ConferencePanel;
+import org.nflcalc.Views.RecordPanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -52,10 +53,15 @@ public class Controller {
     public static JPanel createMainPanel() {
         final Conference nfc = Controller.loadConference(Conference.ConferenceType.NFC);
         final Conference afc = Controller.loadConference(Conference.ConferenceType.AFC);
+        final RecordController recordController = new RecordController(afc, nfc);
         final ConferencePanel nfcPanel = new ConferencePanel(nfc);
         final ConferencePanel afcPanel = new ConferencePanel(afc);
+        final RecordPanel recordPanel = new RecordPanel();
+
+        recordController.setRecordPanel(recordPanel);
 
         final JPanel mainPanel = new JPanel();
+        mainPanel.add(recordPanel);
         mainPanel.add(nfcPanel);
         mainPanel.add(afcPanel);
 

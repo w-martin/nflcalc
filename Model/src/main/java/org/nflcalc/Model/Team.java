@@ -6,6 +6,7 @@ package org.nflcalc.Model;
 public class Team {
 
     private final String id;
+    private int wins, losses, ties = 0;
 
     public Team(final String id) {
         this.id = id;
@@ -13,5 +14,29 @@ public class Team {
 
     public String getId() {
         return id;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public void setWins(int wins) {
+        this.wins = wins;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public void setLosses(int losses) {
+        this.losses = losses;
+    }
+
+    public int getTies() {
+        return ties;
+    }
+
+    public void setTies(int ties) {
+        this.ties = ties;
     }
 }
