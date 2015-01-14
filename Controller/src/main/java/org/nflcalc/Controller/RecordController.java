@@ -24,6 +24,7 @@ public class RecordController {
 
     private void refreshResults() {
         // pull NFL.com JSON data
+        // yahoo fantasy sport API might serve
     }
 
     public void setRecordPanel(RecordPanel recordPanel) {

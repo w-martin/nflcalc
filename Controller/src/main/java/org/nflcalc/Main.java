@@ -15,7 +15,8 @@ public class Main {
 
         CalcFrame frame = new CalcFrame();
 
-        final JPanel mainPanel = Controller.createMainPanel();
+        final Controller controller = Controller.getInstance();
+        final JPanel mainPanel = controller.startMainPanel();
         frame.add(mainPanel);
 
         frame.pack();

@@ -12,13 +12,29 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.Set;
 
 /**
  * Created by will on 06/01/15.
  */
 public class Controller {
 
-    public static Conference loadConference(final Conference.ConferenceType conferenceType) {
+    private static Controller instance = null;
+    private final Settings settings;
+
+    private Controller () {
+        settings = new Settings();
+        settings.loadPreferences();
+    }
+
+    public static synchronized Controller getInstance() {
+        if (null == instance) {
+            instance = new Controller();
+        }
+        return instance;
+    }
+
+    private Conference loadConference(final Conference.ConferenceType conferenceType) {
         final Conference conference = new Conference(conferenceType);
 
         String filename = conferenceType.getName().concat(".csv");
@@ -42,6 +58,10 @@ public class Controller {
                 divisions[d] = division;
             }
             conference.setDivisions(divisions);
+
+            bufferedReader.close();
+            inputStreamReader.close();
+            is.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,9 +70,9 @@ public class Controller {
     }
 
 
-    public static JPanel createMainPanel() {
-        final Conference nfc = Controller.loadConference(Conference.ConferenceType.NFC);
-        final Conference afc = Controller.loadConference(Conference.ConferenceType.AFC);
+    public JPanel startMainPanel() {
+        final Conference nfc = loadConference(Conference.ConferenceType.NFC);
+        final Conference afc = loadConference(Conference.ConferenceType.AFC);
         final RecordController recordController = new RecordController(afc, nfc);
         final ConferencePanel nfcPanel = new ConferencePanel(nfc);
         final ConferencePanel afcPanel = new ConferencePanel(afc);
