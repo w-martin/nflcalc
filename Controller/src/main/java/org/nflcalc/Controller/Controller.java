@@ -7,12 +7,7 @@ import org.nflcalc.Views.ConferencePanel;
 import org.nflcalc.Views.RecordPanel;
 
 import javax.swing.*;
-import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.Set;
+import java.io.*;
 
 /**
  * Created by will on 06/01/15.
@@ -24,7 +19,9 @@ public class Controller {
 
     private Controller () {
         settings = new Settings();
-        settings.loadPreferences();
+        final File dataLocation = new File(Settings.getDefaultDataLocation());
+        dataLocation.mkdirs();
+        settings.saveSettings(Settings.getDefaultSettingsFileLocation());
     }
 
     public static synchronized Controller getInstance() {
